@@ -11,7 +11,6 @@ interface AuthenticatedRequest extends Request {
 }
 
 export const userMiddleware = async (req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<Response | void> => {
-    console.log('Request headers:');
     const authHeader = req.headers.authorization || req.cookies.token;
 
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -26,7 +25,6 @@ export const userMiddleware = async (req: AuthenticatedRequest, res: Response, n
     try {
         const decoded = await Jwt.verify(token, JWT_SECRET);
         req.user = decoded;
-        console.log('Decoded User:', decoded);
         next();
     } catch (e) {
         return res.status(403).json({

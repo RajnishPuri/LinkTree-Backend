@@ -23,7 +23,6 @@ export const createUser = async (req: UserCredentials, res: Response): Promise<R
                 message: "All fields are required"
             });
         }
-        console.log(user);
         const existingUser = await UserModel.findOne({ email: user.email });
         if (existingUser) {
             return res.status(400).json({

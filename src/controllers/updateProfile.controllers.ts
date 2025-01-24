@@ -56,7 +56,6 @@ export const updateProfile = async (
     res: Response
 ): Promise<Response> => {
     try {
-        console.log('Request body:', req.body);
         const { name, email, userName, bio } = req.body;
         const files = req.files;
 
@@ -97,7 +96,6 @@ export const updateProfile = async (
         }
 
         const userProfile = await ProfileModel.findOne({ user: req.user?.userId });
-        console.log('User Profile:', userProfile);
         if (!userProfile) {
             return res.status(404).json({
                 success: false,
