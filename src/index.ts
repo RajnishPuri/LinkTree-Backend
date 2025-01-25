@@ -14,7 +14,7 @@ const PORT = process.env.PORT || "";
 const app = express();
 app.use(cookieParser());
 app.use(cors({
-    origin: 'https://linktree-frontend-2j97.onrender.com',
+    origin: '*',
     credentials: true,
 }));
 
