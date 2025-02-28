@@ -22,6 +22,9 @@ app.use(express.json());
 app.use('/api/user', userRouter);
 app.use('/api/profile', profileRouter);
 app.use('/api/:userName', getProfileData as any);
+app.get('/healthz', (req, res) => {
+    res.status(200).send('OK');
+});
 
 const server = app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
